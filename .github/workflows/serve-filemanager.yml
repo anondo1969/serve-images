@@ -25,7 +25,7 @@ jobs:
   push: 
     if: | 
       github.ref == 'refs/heads/main' &&
-      github.repository == 'scilifelabdatacentre/serve-images'
+      github.repository == 'anondo1969/serve-images'
     runs-on: ubuntu-latest
     concurrency:
       group: '${{ github.workflow }} @ ${{ github.event.pull_request.head.label || github.head_ref || github.ref }}'
@@ -42,7 +42,7 @@ jobs:
       id: meta
       uses: docker/metadata-action@v4
       with:
-        images: ghcr.io/scilifelabdatacentre/serve-filemanager
+        images: ghcr.io/anondo1969/serve-filemanager
         tags: |
             type=raw,value={{date 'YYMMDD-HHmm' tz='Europe/Stockholm'}}
 
@@ -62,5 +62,5 @@ jobs:
         build-args: version=${{ github.ref_name }}
         tags: |
             ${{ steps.meta.outputs.tags }}
-            ghcr.io/scilifelabdatacentre/serve-filemanager:latest
+            ghcr.io/anondo1969/serve-filemanager:latest
         labels: ${{ steps.meta.outputs.labels }}
