@@ -70,7 +70,7 @@ jobs:
   push: 
     if: | 
       github.ref == 'refs/heads/main' &&
-      github.repository == 'scilifelabdatacentre/serve-images'
+      github.repository == 'anondo1969/serve-images'
     needs: build_and_test
     runs-on: ubuntu-latest
     concurrency:
@@ -88,7 +88,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: ghcr.io/scilifelabdatacentre/serve-jupyterlab-datascience
+          images: ghcr.io/anondo1969/serve-jupyterlab-datascience
           tags: |
             type=raw,value={{date 'YYMMDD-HHmm' tz='Europe/Stockholm'}}
 
@@ -108,5 +108,5 @@ jobs:
           build-args: version=${{ github.ref_name }}
           tags: |
             ${{ steps.meta.outputs.tags }}
-            ghcr.io/scilifelabdatacentre/serve-jupyterlab-datascience:latest
+            ghcr.io/anondo1969/serve-jupyterlab-datascience:latest
           labels: ${{ steps.meta.outputs.labels }}
