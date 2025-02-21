@@ -7,7 +7,7 @@ COPY filebrowser.json /.filebrowser.json
 
 COPY startup.sh /usr/local/bin/startup.sh
 RUN apk add --update --no-cache \
-    wget \
+    wget=1.25.0-r0 \
     zip~=3 \
     unzip~=6 \
     && adduser -D -u 1000 -g 1000 -h $HOME $USER \
